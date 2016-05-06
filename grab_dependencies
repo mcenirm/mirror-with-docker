@@ -6,15 +6,24 @@ REPOSITORIO_VERSION="1.1.0"
 REPOSITORIO_DIST_FILE="Rex-Repositorio-${REPOSITORIO_VERSION}.tar.gz"
 REPOSITORIO_DIST_URL="http://get.repositor.io/downloads/${REPOSITORIO_DIST_FILE}"
 
+REXIFY_REPO_GPG_URL="http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO"
+
+
+grab () {
+  local url=$1
+  local file=${2:-${1##*/}}
+
+  cmd=( curl -R -L )
+  cmd+=( -o "$file" )
+  if [ -f "$file" ] ; then
+    cmd+=( -z "$file" )
+  fi
+  cmd+=( "$url" )
+
+  ( set -x ; "${cmd[@]}" )
+}
+
 cd "$(dirname "$0")"
 
-repositorio_curl_cmd=( curl -R -L )
-repositorio_curl_cmd+=( -o "$REPOSITORIO_DIST_FILE" )
-if [ -f "$REPOSITORIO_DIST_FILE" ] ; then
-  repositorio_curl_cmd+=( -z "$REPOSITORIO_DIST_FILE" )
-fi
-repositorio_curl_cmd+=( "$REPOSITORIO_DIST_URL" )
-
-set -x
-
-"${repositorio_curl_cmd[@]}"
+grab "$REPOSITORIO_DIST_URL"
+grab "$REXIFY_REPO_GPG_URL"
