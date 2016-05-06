@@ -3,8 +3,8 @@
 set -e
 
 REPOSITORIO_VERSION="1.1.0"
-REPOSITORIO_DIST_URL="http://get.repositor.io/downloads/Rex-Repositorio-${REPOSITORIO_VERSION}.tar.gz"
-REPOSITORIO_DIST_FILE="repositorio-${REPOSITORIO_VERSION}.tar.gz"
+REPOSITORIO_DIST_FILE="Rex-Repositorio-${REPOSITORIO_VERSION}.tar.gz"
+REPOSITORIO_DIST_URL="http://get.repositor.io/downloads/${REPOSITORIO_DIST_FILE}"
 
 cd "$(dirname "$0")"
 
