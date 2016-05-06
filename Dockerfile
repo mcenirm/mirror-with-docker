@@ -51,4 +51,6 @@ RUN mkdir -p /etc/rex
 COPY log4perl.conf /etc/rex/log4perl.conf
 RUN ln -s /mirror/etc/repositorio.conf /etc/rex/repositorio.conf
 
+VOLUME /mirror
+
 ENTRYPOINT repositorio --mirror --repo=all
