@@ -1,0 +1,4 @@
+[rex]
+name=CentOS $releasever - $basearch - Rex Repository
+baseurl=http://rex.linux-files.org/CentOS/$releasever/rex/$basearch/
+enabled=1
