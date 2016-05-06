@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+REPOSITORIO_VERSION="1.1.0"
+REPOSITORIO_DIST_URL="http://get.repositor.io/downloads/Rex-Repositorio-${REPOSITORIO_VERSION}.tar.gz"
+REPOSITORIO_DIST_FILE="repositorio-${REPOSITORIO_VERSION}.tar.gz"
+
+cd "$(dirname "$0")"
+
+repositorio_curl_cmd=( curl -R -L )
+repositorio_curl_cmd+=( -o "$REPOSITORIO_DIST_FILE" )
+if [ -f "$REPOSITORIO_DIST_FILE" ] ; then
+  repositorio_curl_cmd+=( -z "$REPOSITORIO_DIST_FILE" )
+fi
+repositorio_curl_cmd+=( "$REPOSITORIO_DIST_URL" )
+
+set -x
+
+"${repositorio_curl_cmd[@]}"
