@@ -53,4 +53,4 @@ RUN ln -s /mirror/etc/repositorio.conf /etc/rex/repositorio.conf
 
 VOLUME /mirror
 
-ENTRYPOINT repositorio --mirror --repo=all
+CMD [ "repositorio", "--mirror", "--repo=all" ]

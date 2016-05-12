@@ -142,7 +142,7 @@ To give the Docker virtual machine  access to a USB device:
    Note: Repeat step 5 whenever the Docker virtual machine
    restarts.
 
-   **TODO**: Figure out to circumvent TC overwriting fstab.
+   **TODO**: Figure out how to circumvent TC overwriting fstab.
 
 
 ## Build the Docker image
@@ -174,6 +174,7 @@ cp $src/example.repositorio.conf /mirror/etc/repositorio.conf
 ```Shell
 docker run \
   --rm \
+  -it \
   --env=http_proxy='http://192.168.99.1:3128' \
   --volume='/mnt/sdb2':'/mirror' \
   $image_tag
